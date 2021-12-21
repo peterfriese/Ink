@@ -15,7 +15,7 @@ internal struct Paragraph: Fragment {
 
     static func read(using reader: inout Reader, ignorePrefix: String) -> Paragraph {
         return Paragraph(text: .read(using: &reader,
-                                     terminator: nil,
+                                     terminators: [],
                                      ignorePrefix: ignorePrefix))
     }
 
