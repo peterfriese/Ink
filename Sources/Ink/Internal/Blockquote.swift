@@ -46,6 +46,9 @@ internal struct Blockquote: Fragment {
                 case "-", "*", "+", \.isNumber:
                     let list = try List.read(using: &reader, ignorePrefix: ">")
                     blockquote.items.append(list)
+                    if reader.currentCharacter == "\n" {
+                        reader.advanceIndex()
+                    }
                 case ">":
                     let nestedBlockquote = try Blockquote.read(using: &reader, ignorePrefix: ">")
                     blockquote.items.append(nestedBlockquote)
